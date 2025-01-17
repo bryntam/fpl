@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "FPL Buddy",
+    "version": "1.0",
+    "description": "A FPL extention to check your team quickly",
+    "permissions": ["storage", "activeTab", "https://fantasy.premierleague.com/*"],
+    "action": {
+    "default_popup": "templates/index.html",
+    
+    "content_scripts": [
+    {
+        "matches": ["https://fantasy.premierleague.com/*"],
+        "js": ["static/fpl.js"]
+    }]
+    }
+}
