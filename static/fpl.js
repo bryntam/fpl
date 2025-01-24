@@ -1,14 +1,16 @@
 $(document).ready(function () {
+    const backendUrl = "http://127.0.0.1:5000"; //REPLACE URL WITH BACKEND
+
     var playerNames = {};
     var playerStats = {};
 
     async function fetchPlayerInfo() {
-        const response = await $.getJSON('/player-info');
+        const response = await $.getJSON(`${backendUrl}/player-info`);
         playerNames = response;
     }
 
     async function fetchLiveGameweekData(gameweek) {
-        const response = await $.getJSON(`/event-live/${gameweek}`);
+        const response = await $.getJSON(`${backendUrl}/event-live/${gameweek}`);
         playerStats = response.elements.reduce((acc, curr) => {
             acc[curr.id] = curr.stats.total_points;  // Adjust according to actual response structure
             return acc;
@@ -35,7 +37,7 @@ $(document).ready(function () {
         await fetchPlayerInfo();
         await fetchLiveGameweekData(gameweek);
 
-        const url = `/fpl-team/${teamId}/gw/${gameweek}`;
+        const url = `${backendUrl}/fpl-team/${teamId}/gw/${gameweek}`;
         $.getJSON(url, function (data) {
             var mainSquadHtml = '<table><tr><th>Points</th><th>Player</th><th>Position</th></tr>';
             var benchHtml = '<table><tr><th>Points</th><th>Player</th><th>Position</th></tr>';

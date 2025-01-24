@@ -2,15 +2,18 @@
     "manifest_version": 3,
     "name": "FPL Buddy",
     "version": "1.0",
-    "description": "A FPL extention to check your team quickly",
+    "description": "A FPL extension to check your team quickly",
     "permissions": ["storage", "activeTab", "https://fantasy.premierleague.com/*"],
     "action": {
-    "default_popup": "templates/index.html",
-    
+        "default_popup": "/templates/index.html"
+    },
     "content_scripts": [
-    {
-        "matches": ["https://fantasy.premierleague.com/*"],
-        "js": ["static/fpl.js"]
-    }]
+        {
+            "matches": ["https://fantasy.premierleague.com/*"],
+            "js": ["static/jquery-3.7.1.min.js", "static/fpl.js"]
+        }
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
     }
 }
