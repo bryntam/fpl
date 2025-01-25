@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const backendUrl = "http://127.0.0.1:5000"; //REPLACE URL WITH BACKEND
+    const backendUrl = "https://bryntam.pythonanywhere.com"; //REPLACE URL WITH BACKEND
 
     var playerNames = {};
     var playerStats = {};
